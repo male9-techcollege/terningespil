@@ -5,7 +5,7 @@ Vores spil hedder Black Jack. Spillet handler om at blive den første til at få
 Opgavens afleveringsadresse er https://github.com/male9-techcollege/terningespil
 
 Holdmedlemmerne er:
-Nicolaj
-Malte
-Marie-Pierre Lessard
-Mathias
+* Nicolaj
+* Malte
+* Marie-Pierre Lessard
+* Mathias
