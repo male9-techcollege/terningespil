@@ -1,16 +1,32 @@
 /* This snippet is an improved version of the one in my leo-lov exercise. */
 
+/* "import type only imports declarations to be used for type annotations and declarations. It always gets fully erased, 
+so there’s no remnant of it at runtime. Similarly, export type only provides an export that can be used for type contexts, 
+and is also erased from TypeScript’s output."
+https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html
+*/
+import type { ImgHTMLAttributes } from "../../../node_modules/@types/react/index";
+
 /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
 // #region Sources for making attributes truly required even though they can be undefined by default (e.g. loading attribute)
-/* Initial note: the images will still be displayed if "mandatory" attributes are missing, 
+/* Initial note to explain the point of the following sources: 
+With the following interface and types, the images will still be displayed if "mandatory" attributes are missing, 
 but the text editor will display squiggly lines in the code to show that there is a problem to address (something missing).
-Please note that using an interface has a major inconvenient, which I will explain. There is no way to go around
-that inconvenient when using TypeScript since an interface is required for importing images. 
-INCONVENIENT: The interface has to include all HTML-element attributes that one might want to use. 
+My idea/desire was to create atoms that flagged attributes to provide in the HTML file in order to comply with 
+best practices in search-engine optimisation. 
+
+Please note that there is a major inconvenient to using a custom interface that does not extend native HTML elements 
+or one of React's generic types, which I will explain. Another option would be to not use an interface at all,
+but that is not an option when using TypeScript and importing images since an interface is required for that.
+
+INCONVENIENT: The interface has to include all HTML-element attributes that the developer might want to use. 
 If one adds attributes that are not in the interface, such as className, an error is thrown. 
-This happens whether one uses NonNullable<T> or not. In order to add styling to an image, it is necessary to
+This happens whether one uses NonNullable<T> or not. It is the interface that is restrictive.
+In order to add styling to an image that has such a restrictive interface, it is necessary to
 use the selector of an ancestor and then use a CSS selector plus img/... as a child selector in order to apply styling 
 to the image.
+
+Sources that lead me to the solution:
 
 "When the TypeScript compiler throws the error "type string undefined is not assignable to type string," 
 it indicates a mismatch between the expected type and the actual value type. This error often occurs when a variable 
@@ -24,13 +40,13 @@ This code snippet shows how to use the nullish coalescing operator to provide a 
 when the original value is undefined."
 https://www.dhiwise.com/post/understand-error-type-string-undefined-is-not-assignable 
 
-The easiest solution that I found is to assign the type  any  to the loading attribute (loading: any;) 
-but it defeats the point of trying to require a loading attribute to be defined (a choice to be made).
+The easiest solution that I found, at first, was to assign the type  any  to the loading attribute (loading: any;) 
+but this defeated the purpose of trying to require a loading attribute to be defined (a choice to be made).
 I found that unsatisfactory solution in a much more complex debate at:
 https://stackoverflow.com/questions/39275213/react-and-typescript-interface-or-operator
 
-The essence of that debate is explained by the following source, which doesn't provide a solution
-to the current problem, but it provides insight.
+The essence of that debate is explained by the following source, which didn't provide a solution
+to the current problem, but it provided insight.
 "Nullable types
 TypeScript has two special types, null and undefined, that have the values null and undefined respectively. We mentioned 
 these briefly in the Basic Types section.
@@ -49,7 +65,7 @@ The nullish coalescing operator has the fifth-lowest operator precedence, direct
 directly higher than the conditional (ternary) operator."
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing
 
-As a consequence, I looked for another solution, and I found it here: 
+As a consequence, I looked for another solution for the first part of the problem, and I found it here: 
 
 "Why Use NonNullable<T>
 In many applications, especially those dealing with complex data structures or external data sources, it’s common 
@@ -63,6 +79,22 @@ NonNullable<T> with Pick<T, K>
 Pick<T, K> creates a type by picking a set of properties K from T. When used with NonNullable<T>, you can selectively 
 make certain properties non-nullable, providing a fine-grained approach to null safety within your types."
 https://medium.com/@gabrielairiart.gi/the-power-of-nonnullable-t-in-typescript-9cf156beb8da
+
+The second part of the problem was extending the custom interface.
+It is possible to use React's generic interfaces for various HTML elements according to
+https://frontguys.fr/front-end/typescript-react-native-attributes/
+In the current version, the location where these ready-made interfaces can be found is:
+node_modules > @types > react > ts5.0 > index.d.ts 
+The strategy consists in creating a condition according to which a new type is equal to
+ImgHTMLAttributes<HTMLImageElement>
+- or - 
+InputHTMLAttributes<HTMLInputElement>
+- or - 
+IframeHTMLAttributes<HTMLIFrameElement>
+- etc. plus (and) - 
+a custom interface that the developer defined.
+
+I used that in the code below.
 */
 // #endregion
 // #region Implementation of the method explained above
@@ -73,10 +105,13 @@ interface ImgInterfaceByMariePierreLessard {
 };
 
 type nonNullableImgInterfaceByMariePierreLessard = NonNullable<Pick<ImgInterfaceByMariePierreLessard, "alt" | "src" | "loading">>;
+type enhancedGenericInterfaceForImgByMariePierreLessard = ImgHTMLAttributes<HTMLImageElement> & nonNullableImgInterfaceByMariePierreLessard;
 // #endregion
  
-export const ImgComponentByMariePierreLessard = (props: nonNullableImgInterfaceByMariePierreLessard) => {
-    return (
-        <img src={props.src} alt={props.alt} loading={props.loading} />
-    );
-};
+export const ImgComponentByMariePierreLessard = (
+    {src, alt, loading, ... rest}: enhancedGenericInterfaceForImgByMariePierreLessard
+    ) => {
+        return (
+            <img src={src} alt={alt} loading={loading} {... rest} />
+        );
+    };
