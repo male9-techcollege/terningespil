@@ -1,9 +1,16 @@
 /* This snippet is an improved version of the one in my leo-lov exercise. */
 
 /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
-// #region Sources for making attributes required even though they can be undefined by default
+// #region Sources for making attributes truly required even though they can be undefined by default (e.g. loading attribute)
 /* Initial note: the images will still be displayed if "mandatory" attributes are missing, 
-but the text editor will display squiggly lines in the code to show that there is a problem to address.
+but the text editor will display squiggly lines in the code to show that there is a problem to address (something missing).
+Please note that using an interface has a major inconvenient, which I will explain. There is no way to go around
+that inconvenient when using TypeScript since an interface is required for importing images. 
+INCONVENIENT: The interface has to include all HTML-element attributes that one might want to use. 
+If one adds attributes that are not in the interface, such as className, an error is thrown. 
+This happens whether one uses NonNullable<T> or not. In order to add styling to an image, it is necessary to
+use the selector of an ancestor and then use a CSS selector plus img/... as a child selector in order to apply styling 
+to the image.
 
 "When the TypeScript compiler throws the error "type string undefined is not assignable to type string," 
 it indicates a mismatch between the expected type and the actual value type. This error often occurs when a variable 
@@ -34,8 +41,8 @@ The strictNullChecks flag fixes this: when you declare a variable, it doesn’t 
 null or undefined. You can include them explicitly using a union type:"
 https://www.typescriptlang.org/docs/handbook/advanced-types.html 
 
-Based on the recommendation from DhiWise, I read the following in MDN, but it migh not be possible to use that
-inside of an interface (even though one should at least be able to use | ) because I still got an error.
+Based on the recommendation from DhiWise, I read the following in MDN, but it might not be possible to use that
+inside of an interface (even though one can use | ) because I still got an error.
 "The nullish coalescing (??) operator is a logical operator that returns its right-hand side operand 
 when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand. (...)
 The nullish coalescing operator has the fifth-lowest operator precedence, directly lower than || and 
