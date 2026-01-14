@@ -1,5 +1,3 @@
-/* This snippet is an improved version of the one in my leo-lov exercise. */
-
 /* Source for way to fold regions in .jsx files: https://stackoverflow.com/questions/58882591/region-for-jsx */
 // #region Sources for making attributes required even though they can be undefined by default
 /* Initial note: the images will still be displayed if "mandatory" attributes are missing, 
@@ -59,17 +57,64 @@ https://medium.com/@gabrielairiart.gi/the-power-of-nonnullable-t-in-typescript-9
 */
 // #endregion
 // #region Implementation of the method explained above
-interface ImgInterfaceByMariePierreLessard {
-    alt: string;
-    src: string;
-    loading: any;
+interface BtnInterfaceByMariePierreLessard {
+    type: any;
+    // #region Expanation to team members
+    /* This interface gives an alternative:
+    use value or children to show text or HTML elements on the button. 
+    
+    This being said, it is not necessary to include all native attributes that one might want to use in the interface.
+    They are native.
+    It is also always possible to create additional interfaces that extend a basic interface with custom functions, 
+    - for instance thanks to a spread operator; see: 
+    https://stackoverflow.com/questions/43621934/typescript-interface-with-spread-members
+    - or, as Kasper said, by extending the native HTML attributes as it is explained in this source: 
+    "What happens if we want this to be a password input? Hide the value? Have a minimum length? To be required?
+    Do we have to add all the relevant HTML attributes for our input to CustomInputProps?
+    Should we create a new component?
+    Nope! We can use the InputHTMLAttributes interface exported from React. 
+    React exports a set of generic interfaces that correspond to various HTML elements. (...)
+    We can create a new TypeScript type which combines our custom interface and the InputHTMLAttributes interface.
+    Screenshot of a typescript type extending the  InputHTMLAttributes interface. The full code is available at the sandbox link below."
+    https://frontguys.fr/front-end/typescript-react-native-attributes/
+    */
+    // #endregion 
+    value?: string;
+    /* Source for the following key-value pair: 
+    https://dev.to/lico/i-ruined-my-react-components-by-using-optional-props-3o64 */
+    children?: React.ReactNode | string;
+    // #region Expanation to team members
+    /* Kasper said that if I included the following, there would be a problem if the function ever had
+    to receive arguments or to return something. A void function is indeed a function at the end of its call stack
+    if I understood that concept properly. Since this button component is intended for all uses, it's interface 
+    should be extended once the purpose of the button is decided. See notes above about extending an interface.
+    onClick?: ()=>void;
+ 
+    Course notes/reminder: Kasper wrote on Teams:
+    // Hvis den tager en string som argument
+    interface btnProps {
+        onClick: (myArgument: string) => void
+    }
+    // Eller hvis den returnerer eks. en string
+    interface btnProps {
+        onClick: () => myString: string
+    }
+    */
+    /* Reminder to team members: it would be advantageous to use the following button attributes:
+    disabled (to deactivate the button of players unless it is their turn to play)
+    command (to open and close a modal in a dialog element)
+    form (in cases where the button is outside of the form to which it should be associated)
+    */
+    // #endregion 
 };
 
-type nonNullableImgInterfaceByMariePierreLessard = NonNullable<Pick<ImgInterfaceByMariePierreLessard, "alt" | "src" | "loading">>;
+type nonNullableBtnPropsByMariePierreLessard = NonNullable<Pick<BtnInterfaceByMariePierreLessard, "type" >>;
 // #endregion
- 
-export const ImgComponentByMariePierreLessard = (props: nonNullableImgInterfaceByMariePierreLessard) => {
+
+export const BtnComponentByMariePierreLessard = (props: nonNullableBtnPropsByMariePierreLessard) => {
+    /* Kasper said that the only attributes that I need to include in the component definition are
+    the ones that are required. */
     return (
-        <img src={props.src} alt={props.alt} loading={props.loading} />
+        <button type={props.type}></button>
     );
 };
