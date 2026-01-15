@@ -1,6 +1,35 @@
-/* Farvepaletten kommer til at bruge
+/* TO DO
+Farvepaletten kommer til at bruge
 #ff4d4d
 
 #3b0d0d
 
+$clr-
 */
+
+@use "sass:math";
+
+/* SIZES */
+
+/* Explanation to team members (ideas behind choice of sizes) 
+Mobile-first: 
+On mobiles, the oldest ancestor (container for the whole game) has to have some padding in our prototype, 
+or text will touch the edges of the screen. 
+Basic margin of $size-base-by-marie-pierre-lessard was used for that. 
+*/
+$size-base-by-marie-pierre-lessard: 1rem;
+$size-third-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.333;
+$size-half-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.5;
+$size-thirdx2-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.666;
+$size-three-quarters-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.75;
+
+$size-gr-by-marie-pierre-lessard: 1.618rem;
+$size-third-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.333;
+$size-half-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.5;
+$size-thirdx2-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.666;
+$size-three-quarters-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.75;
+$size-gr-squared-by-marie-pierre-lessard: math.pow(1.618, 2) * 1rem;
+$size-gr-cubed-by-marie-pierre-lessard: math.pow(1.618, 3) * 1rem;
+
+$size-wrapper-by-marie-pierre-lessard: 1300px;
+

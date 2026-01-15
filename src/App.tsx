@@ -6,10 +6,12 @@ This was in the fragment:
 <ImgComponentByMariePierreLessard src={koala} alt={"koala"} loading={"lazy"} className="test" />
 
 For testing purposes (font family, font sizes, ...):
-<h1>h1 h1 h1 h1</h1>
-<h2>h2 h2 h2 h2</h2>
-<h3>h3 h3 h3 h3</h3>
-<p>Text text text</p>
+<div className="App">
+    <h1>h1 h1 h1 h1</h1>
+    <h2>h2 h2 h2 h2</h2>
+    <h3>h3 h3 h3 h3</h3>
+    <p>Text text text</p>
+</div>
 
 */
 import "./App.scss";
