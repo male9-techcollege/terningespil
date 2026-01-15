@@ -1,3 +1,5 @@
+@use "./styles/variables.module.scss" as *;
+
 /* Universal selector */
 * {
     margin: 0;
@@ -180,5 +182,11 @@ https: //docs.streamlit.io/develop/concepts/configuration/theming-customize-font
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     min-height: 100vh;
+}
+
+.App {
+    max-width: $size-wrapper-by-marie-pierre-lessard;
+    margin-inline: auto;
+    margin-block: $size-base-by-marie-pierre-lessard;
 }
 
