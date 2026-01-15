@@ -59,6 +59,16 @@ const BlackjackGame = () => {
     }));
   };
 
+  // Reset game
+  const resetGame = () => {
+    setGameState({
+      playerTotal: 0,
+      rolls: [],
+      gameStatus: "initial",
+      canHit: false,
+    });
+  };
+
   const roundFinished = gameState.gameStatus === "bust" || gameState.gameStatus === "stand";
 
   return (
@@ -89,12 +99,14 @@ const BlackjackGame = () => {
         {gameState.gameStatus === "bust" && (
           <div>
             <h3>BUST! You went over 21</h3>
+            <button onClick={resetGame}>New Game</button>
           </div>
         )}
 
         {gameState.gameStatus === "stand" && (
           <div>
             <h3>You stand with {gameState.playerTotal}</h3>
+            <button onClick={resetGame}>New Game</button>
           </div>
         )}
 
