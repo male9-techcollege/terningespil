@@ -16,11 +16,11 @@ import "./App.scss";
 import "./styles/typography.module.scss";
 
 function App() {
-
   return (
-    <>
-    </>
-  )
-};
+    <div className="App">
+      <BlackjackGame />
+    </div>
+  );
+}
 
 export default App;
