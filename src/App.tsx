@@ -1,6 +1,5 @@
 import TaberBesked from "./components/taberbesked/TaberBesked";
 import PlayerState from "./components/PlayerState/PlayerState";
-import DiceRoller from "./components/BlackjackDie/DiceRoller";
 import BlackjackGame from "./components/BlackjackGame/BlackjackGame";
 
 function App() {
