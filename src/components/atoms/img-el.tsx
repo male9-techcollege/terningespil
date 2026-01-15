@@ -104,14 +104,23 @@ interface ImgInterfaceByMariePierreLessard {
     loading: any;
 };
 
+/* The following works: 
 type nonNullableImgInterfaceByMariePierreLessard = NonNullable<Pick<ImgInterfaceByMariePierreLessard, "alt" | "src" | "loading">>;
 type enhancedGenericInterfaceForImgByMariePierreLessard = ImgHTMLAttributes<HTMLImageElement> & nonNullableImgInterfaceByMariePierreLessard;
+
+But, since there is currently no need for 2 types in this project, the coding can be further simplified as follows.
+Now, there is just one type that adds constraints to a custom interface, which itself is an extension 
+to React's generic interface for img elements. 
+*/
+type extendedGenericInterfaceForImgByMariePierreLessard = ImgHTMLAttributes<HTMLImageElement> & NonNullable<Pick<ImgInterfaceByMariePierreLessard, "alt" | "src" | "loading">>;
 // #endregion
  
 export const ImgComponentByMariePierreLessard = (
-    {src, alt, loading, ... rest}: enhancedGenericInterfaceForImgByMariePierreLessard
+        {src, alt, loading, ... rest}: extendedGenericInterfaceForImgByMariePierreLessard
     ) => {
-        return (
+    /* Kasper said that the only attributes that I need to include in the component definition are
+    the ones that are required. */
+    return (
             <img src={src} alt={alt} loading={loading} {... rest} />
-        );
-    };
+    );
+};
