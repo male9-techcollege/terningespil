@@ -1,9 +1,10 @@
-import DiceRoller from "./components/BlackjackDie/DiceRoller";
+import BlackjackGame from "./components/BlackjackGame/BlackjackGame";
+
 function App() {
   return (
     <div className="App">
       <h1>Blackjack Dice Game</h1>
-      <DiceRoller />
+      <BlackjackGame />
     </div>
   );
 }
