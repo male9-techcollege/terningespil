@@ -1,0 +1,34 @@
+h1 {
+    /* This font is always bold-looking. */
+    font-family: "Limelight",
+        Georgia,
+        "Times New Roman",
+        Times,
+        serif;
+    /* TO DO establish relative font sizes */
+}
+
+h2 {
+    font-family: "Trirong Thin Italic",
+        Georgia,
+        "Times New Roman",
+        Times,
+        serif;
+    /* TO DO establish relative font sizes */
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Numans Regular",
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+    /* Since it is a casino, a more imposing font weight looks better with Numans Regular. 
+    It looks adequate (not too bold) with the fallback "Segoe UI". 900 was too much with the fallback. */
+    font-weight: 800;
+    /* TO DO establish relative font sizes */
+}
