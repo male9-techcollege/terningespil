@@ -1,0 +1,184 @@
+/* Universal selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font families */
+/* The font selection was facilitated by https://fontjoy.com */
+
+/* In order to reduce memory usage, I left out the unused Trirong font files from the assets folder.
+It's always to possible to add font files if necessary. */
+
+/* Limelight: fun serif font, reminiscent of fonts in comic strips and entertaining magazines, for major headings 
+Most letters are sans-serif, some of them have a serif style. The font combines harsh edges with soft curves
+(original, artistic). */
+@font-face {
+    font-family: "Limelight";
+    src: url(./assets/fonts/Limelight-Regular.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* An elegant and modern serif font that doesn't feel too dated. Easily readable.
+Also suitable for headings and any text that requires emphasis.
+It should goes well with the fallback fonts chosen. 
+*/
+@font-face {
+    font-family: "Trirong Thin";
+    src: url(./assets/fonts/Trirong-Thin.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Trirong Thin Italic";
+    src: url(./assets/fonts/Trirong-ThinItalic.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Trirong Regular Italic";
+    src: url(./assets/fonts/Trirong-Italic.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Trirong Semi-Bold Italic";
+    src: url(./assets/fonts/Trirong-SemiBoldItalic.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Static sans-serif font 
+(I checked: even though the font is called static, the font file makes it is possible 
+to put letters in italics, and to underline them.
+As for the font weight, the difference isn't visible at every step. 400 is different from 700,
+which is the most important.
+Kasper said that the name of the font file lies (it's variable, not static). 
+It's the file that makes these variations possible.
+"Font files can be static or variable. A static font file contains a single weight and style of font. If you use static font files,
+it is common to load multiple files to fully support the font across different weights (normal, bold) and styles (normal, italic). Variable font files parameterize one or more font attributes,
+which means a single font file can support multiple weights and styles."
+https: //docs.streamlit.io/develop/concepts/configuration/theming-customize-fonts ) 
+*/
+@font-face {
+    font-family: "Numans Regular";
+    src: url(./assets/fonts/Numans-Regular.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* #region Maybe use later */
+/* Kept for later use, just in case: 
+.trirong-extralight {
+    font-family: "Trirong";
+    font-weight: 200;
+    font-style: normal;
+}
+
+.trirong-light {
+    font-family: "Trirong";
+    font-weight: 300;
+    font-style: normal;
+}
+
+.trirong-regular {
+    font-family: "Trirong";
+    font-weight: 400;
+    font-style: normal;
+}
+
+.trirong-medium {
+    font-family: "Trirong";
+    font-weight: 500;
+    font-style: normal;
+}
+
+.trirong-semibold {
+    font-family: "Trirong";
+    font-weight: 600;
+    font-style: normal;
+}
+
+.trirong-bold {
+    font-family: "Trirong";
+    font-weight: 700;
+    font-style: normal;
+}
+
+.trirong-extrabold {
+    font-family: "Trirong";
+    font-weight: 800;
+    font-style: normal;
+}
+
+.trirong-black {
+    font-family: "Trirong";
+    font-weight: 900;
+    font-style: normal;
+}
+
+.trirong-extralight-italic {
+    font-family: "Trirong";
+    font-weight: 200;
+    font-style: italic;
+}
+
+.trirong-light-italic {
+    font-family: "Trirong";
+    font-weight: 300;
+    font-style: italic;
+}
+
+.trirong-medium-italic {
+    font-family: "Trirong";
+    font-weight: 500;
+    font-style: italic;
+}
+
+.trirong-bold-italic {
+    font-family: "Trirong";
+    font-weight: 700;
+    font-style: italic;
+}
+
+.trirong-extrabold-italic {
+    font-family: "Trirong";
+    font-weight: 800;
+    font-style: italic;
+}
+
+.trirong-black-italic {
+    font-family: "Trirong";
+    font-weight: 900;
+    font-style: italic;
+}
+*/
+/* #endregion */
+
+/* HTML element */
+:root {
+    font-family: "Numans Regular", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+/* Div element inside of body in index.html */
+#root {
+    /* TO DO add rows as needed
+    auto row for probable h1 */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
