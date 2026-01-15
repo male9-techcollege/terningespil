@@ -1,7 +1,11 @@
+import TaberBesked from "./components/taberbesked/TaberBesked"
 import PlayerState from "./components/PlayerState/PlayerState";
 import DiceRoller from "./components/BlackjackDie/DiceRoller";
 
 function App() {
+  const spillerHand = 0;
+  const dealerHand = 0;
+  const roundFinished = false;
   return (
      <>
     <div>
@@ -14,6 +18,15 @@ function App() {
     </div>
      </>
     
+  );
+}
+    <>
+      <TaberBesked
+        spillerHand={spillerHand}
+        dealerHand={dealerHand}
+        roundFinished={roundFinished}
+      />
+    </>
   );
 }
 
