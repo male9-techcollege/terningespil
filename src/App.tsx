@@ -1,16 +1,19 @@
-/* For testing purposes: 
-import { ImgComponentByMariePierreLessard } from "./components/atoms/img-el";
-import koala from "./_WW236934.jpg";
-import "./App.css";
-*/
+import TaberBesked from "./components/taberbesked/TaberBesked"
 
 function App() {
+  const spillerHand = 0;
+  const dealerHand = 0;
+  const roundFinished = false;
 
   return (
     <>
-      {/* <ImgComponentByMariePierreLessard src={koala} alt={"koala"} loading={"lazy"} className="test" /> */}
+      <TaberBesked
+        spillerHand={spillerHand}
+        dealerHand={dealerHand}
+        roundFinished={roundFinished}
+      />
     </>
-  )
-};
+  );
+}
 
 export default App;
