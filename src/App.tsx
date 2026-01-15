@@ -1,15 +1,17 @@
 <<<<<<< HEAD
-/* For testing purposes: 
-import { ImgComponentByMariePierreLessard } from "./components/atoms/img-el";
-import koala from "./_WW236934.jpg";
-import "./App.css";
-*/
+import PlayerState from "./components/PlayerState/PlayerState";
 =======
 import DiceRoller from "./components/BlackjackDie/DiceRoller";
 >>>>>>> RolingDice-#25
 
 function App() {
   return (
+    <div>
+      <h1>Blackjack med terninger</h1>
+      <PlayerState />
+    </div>
+  );
+}
 <<<<<<< HEAD
     <>
       {/* <ImgComponentByMariePierreLessard src={koala} alt={"koala"} loading={"lazy"} className="test" /> */}
