@@ -16,17 +16,14 @@ function App() {
       <h1>Blackjack Dice Game</h1>
       <DiceRoller />
     </div>
-     </>
-    
-  );
-}
-    <>
+    <div>
       <TaberBesked
         spillerHand={spillerHand}
         dealerHand={dealerHand}
-        roundFinished={roundFinished}
-      />
-    </>
+        roundFinished={roundFinished} />
+    </div>
+     </>
+    
   );
 }
 
