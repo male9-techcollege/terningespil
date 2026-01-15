@@ -13,6 +13,10 @@ For testing purposes (font family, font sizes, ...):
     <p>Text text text</p>
 </div>
 
+For testing purposes (colours):
+<div></div>
+<div></div>
+<div></div>
 */
 import "./App.scss";
 import "./styles/typography.module.scss";

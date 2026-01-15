@@ -1,10 +1,18 @@
-/* TO DO
-Farvepaletten kommer til at bruge
-#ff4d4d
+/* TO DO 
+Palette checked with Adobe Accessibility Tools at https: //color.adobe.com/create/color-contrast-analyzer
+Results:
+- Dark burgundy is fine as background colour with reddish-orange text
+- Reddish orange is fine as background colour with dark-burgundy text
+Since these two colours are analogous (next to each other on the colour wheel, 
+a touch of green would bring contrast to the colour scheme (a split-complementary palette).
+Source for colour-palette names: https: //www.youtube.com/watch?v=LO30zFqpj-c
 
-#3b0d0d
+Farvepaletten kommer til at bruge:
+Dark burgundy: #3b0d0d
+Reddish orange: #ff4d4d
 
 $clr-
+
 */
 
 @use "sass:math";
