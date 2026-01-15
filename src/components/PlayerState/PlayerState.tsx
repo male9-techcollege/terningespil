@@ -10,7 +10,7 @@ export default function PlayerState() {
   // Tilføj et slag
   const rollDice = () => {
     if (bust || standing) return; // kan ikke slå hvis bust eller står
-    const roll = Math.floor(Math.random() * 6) + 1;
+    const roll = Math.floor(Math.random() * 11) + 1;
     setRolls((prev) => [...prev, roll]);
   };
 
