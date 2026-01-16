@@ -1,6 +1,16 @@
 import { useState } from "react";
 import styles from "./PlayerCard.module.scss";
 
+// Simple bust message component for overlay
+const PlayerBustMessage = ({ total }: { total: number }) => {
+  return (
+    <div className={styles.bustMessage}>
+      <h2>BUST!</h2>
+      <p>Du gik over 21 med {total}</p>
+    </div>
+  );
+};
+
 interface PlayerCardProps {
   onGameStateChange?: (playerTotal: number, gameStatus: "initial" | "playing" | "bust" | "stand", rolls: number[]) => void;
 }
@@ -86,6 +96,13 @@ const PlayerCard = ({ onGameStateChange }: PlayerCardProps) => {
           )}
         </div>
       </div>
+
+      {/* Player bust overlay */}
+      {bust && (
+        <div className={styles.overlay}>
+          <PlayerBustMessage total={total} />
+        </div>
+      )}
     </div>
   );
 };

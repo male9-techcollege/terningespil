@@ -1,5 +1,4 @@
 import { useState } from "react";
-import TaberBesked from "../taberbesked/TaberBesked";
 import DealerCard from "../DealerCard/DealerCard";
 import PlayerCard from "../PlayerCard/PlayerCard";
 import PlayerState from "../PlayerState/PlayerState";
@@ -59,8 +58,6 @@ const BlackjackGame = () => {
           />
         )}
       </div>
-
-      <TaberBesked spillerHand={playerTotal} dealerHand={dealerTotal} roundFinished={roundFinished} />
     </div>
   );
 };

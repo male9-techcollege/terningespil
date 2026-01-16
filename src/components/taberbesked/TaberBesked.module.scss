@@ -1,16 +1,26 @@
+@use "../../styles/variables.module.scss" as *;
+
 .taberBesked {
-  background-color: #3b0d0d;
-  border: 2px solid #ff4d4d;
-  color: #fff;
-  padding: 1.5rem;
+  background-color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  border: 2px solid $clr-reddish-orange-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
+  padding: $size-base-by-marie-pierre-lessard;
   border-radius: 8px;
   text-align: center;
-  margin-top: 1rem;
   animation: fadeIn 0.3s ease-in-out;
+  max-width: 90%; // Fit within card container
+  box-shadow: 0 4px 8px $clr-black-w-alpha-by-marie-pierre-lessard;
 
   h2 {
     margin: 0 0 0.5rem;
-    color: #ff4d4d;
+    color: $clr-reddish-orange-by-marie-pierre-lessard;
+    font-size: 1.3rem; // Smaller for card overlay
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem; // Smaller for card overlay
+    font-weight: bold;
   }
 }
 

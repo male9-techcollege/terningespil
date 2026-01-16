@@ -12,10 +12,56 @@
   max-width: 400px;
   box-shadow: 0 8px 16px $clr-black-w-alpha-by-marie-pierre-lessard;
   color: $clr-white-by-marie-pierre-lessard;
+  position: relative; // For overlay positioning
 
   /* Position at top center */
   position: relative;
   top: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.winMessage {
+  background-color: $clr-turquoise-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  padding: $size-base-by-marie-pierre-lessard;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid $clr-soft-yellow-by-marie-pierre-lessard;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .cardHeader {
