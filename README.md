@@ -5,10 +5,10 @@ Vores spil hedder Black Jack. Spillet handler om at blive den første til at få
 Opgavens afleveringsadresse er https://github.com/male9-techcollege/terningespil
 
 Holdmedlemmerne er:
-* Nicolai
-* Malte
+* Nicolai Bundgaard Sørensen
+* Malte Engelund
 * Marie-Pierre Lessard
-* Mathias
+* Mathias Oliver Nielsen
 
 Tredjeparts licenser
 * Skrifttyperne er fra Google Fonts med en SIL-Open-Font licens (SIL Open Font License).
