@@ -1,15 +1,17 @@
+@use "../../styles/variables.module.scss" as *;
+
 .dealerCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: linear-gradient(135deg, $clr-x-dark-burgundy-by-marie-pierre-lessard 0%, $clr-dark-blue-by-marie-pierre-lessard 100%);
   border-radius: 12px;
-  padding: 20px;
-  margin: 20px auto;
+  padding: $size-base-by-marie-pierre-lessard;
+  margin: $size-base-by-marie-pierre-lessard auto;
   max-width: 400px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white;
+  box-shadow: 0 8px 16px $clr-black-w-alpha-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
 
   /* Position at top center */
   position: relative;
@@ -43,16 +45,16 @@
 .card {
   width: 60px;
   height: 80px;
-  background: #fff;
-  color: #333;
+  background: $clr-white-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 2px solid #ddd;
+  box-shadow: 0 2px 4px $clr-black-w-alpha-by-marie-pierre-lessard;
+  border: 2px solid $clr-turquoise-by-marie-pierre-lessard;
 }
 
 .dealerInfo {
@@ -61,5 +63,11 @@
   p {
     margin: 5px 0;
     font-size: 1.1rem;
+
+    &.bust {
+      color: $clr-reddish-orange-by-marie-pierre-lessard;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
   }
 }

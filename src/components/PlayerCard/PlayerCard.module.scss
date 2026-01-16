@@ -1,15 +1,17 @@
+@use "../../styles/variables.module.scss" as *;
+
 .playerCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+  background: linear-gradient(135deg, $clr-x-dark-burgundy-by-marie-pierre-lessard 0%, $clr-reddish-orange-by-marie-pierre-lessard 100%);
   border-radius: 12px;
-  padding: 20px;
-  margin: 20px;
+  padding: $size-base-by-marie-pierre-lessard;
+  margin: $size-base-by-marie-pierre-lessard;
   max-width: 350px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white;
+  box-shadow: 0 8px 16px $clr-black-w-alpha-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
 
   /* Will be positioned with justify-content center in parent container */
 }
@@ -42,16 +44,16 @@
 .card {
   width: 50px;
   height: 70px;
-  background: #fff;
-  color: #333;
+  background: $clr-white-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 2px solid #ddd;
+  box-shadow: 0 2px 4px $clr-black-w-alpha-by-marie-pierre-lessard;
+  border: 2px solid $clr-soft-yellow-by-marie-pierre-lessard;
 }
 
 .playerInfo {
@@ -77,22 +79,42 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 
 .hitButton {
-  background-color: #28a745;
-  color: white;
+  background-color: $clr-dark-blue-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
 
-  &:hover {
-    background-color: #218838;
+  &:hover:not(:disabled) {
+    background-color: darken($clr-dark-blue-by-marie-pierre-lessard, 10%);
   }
 }
 
 .standButton {
-  background-color: #dc3545;
-  color: white;
+  background-color: $clr-soft-yellow-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+
+  &:hover:not(:disabled) {
+    background-color: darken($clr-soft-yellow-by-marie-pierre-lessard, 10%);
+  }
+}
+
+.resetButton {
+  background-color: $clr-turquoise-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
 
   &:hover {
-    background-color: #c82333;
+    background-color: darken($clr-turquoise-by-marie-pierre-lessard, 10%);
   }
 }

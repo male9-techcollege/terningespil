@@ -1,125 +1,67 @@
 import { useState } from "react";
-import DiceRoller from "./../BlackjackDie/DiceRoller";
-import PlayerState from "../PlayerState/PlayerState";
 import TaberBesked from "../taberbesked/TaberBesked";
-import DealerState from "../DealerState/DealerState";
 import DealerCard from "../DealerCard/DealerCard";
 import PlayerCard from "../PlayerCard/PlayerCard";
+import PlayerState from "../PlayerState/PlayerState";
+import DealerState from "../DealerState/DealerState";
 
-interface GameState {
-  playerTotal: number;
-  rolls: number[];
-  gameStatus: "initial" | "playing" | "bust" | "stand";
-  canHit: boolean;
-}
+type GameStatus = "initial" | "playing" | "bust" | "stand";
 
 const BlackjackGame = () => {
-  const [gameState, setGameState] = useState<GameState>({
-    playerTotal: 0,
-    rolls: [],
-    gameStatus: "initial",
-    canHit: false,
-  });
-
-  const [dealerRolls, setDealerRolls] = useState<number[]>([]);
+  const [playerTotal, setPlayerTotal] = useState(0);
+  const [playerGameStatus, setPlayerGameStatus] = useState<GameStatus>("initial");
+  const [playerRolls, setPlayerRolls] = useState<number[]>([]);
   const [dealerTotal, setDealerTotal] = useState(0);
   const [dealerBust, setDealerBust] = useState(false);
+  const [dealerRolls, setDealerRolls] = useState<number[]>([]);
   const [dealerStanding, setDealerStanding] = useState(false);
 
-  const handleFirstRoll = (value: number) => {
-    setGameState({
-      playerTotal: value,
-      rolls: [value],
-      gameStatus: "playing",
-      canHit: true,
-    });
+  const handlePlayerStateChange = (total: number, status: GameStatus, rolls: number[]) => {
+    setPlayerTotal(total);
+    setPlayerGameStatus(status);
+    setPlayerRolls(rolls);
   };
 
-  const handleHit = (value: number) => {
-    const newTotal = gameState.playerTotal + value;
-    const newRolls = [...gameState.rolls, value];
-
-    if (newTotal > 21) {
-      setGameState({
-        playerTotal: newTotal,
-        rolls: newRolls,
-        gameStatus: "bust",
-        canHit: false,
-      });
-    } else {
-      setGameState({
-        playerTotal: newTotal,
-        rolls: newRolls,
-        gameStatus: "playing",
-        canHit: true,
-      });
-    }
+  const handleDealerFinished = (total: number, bust: boolean, rolls: number[], standing: boolean) => {
+    setDealerTotal(total);
+    setDealerBust(bust);
+    setDealerRolls(rolls);
+    setDealerStanding(standing);
   };
 
-  const handleStand = () => {
-    setGameState((prev) => ({
-      ...prev,
-      gameStatus: "stand",
-      canHit: false,
-    }));
-  };
-
-  const handleDealerRoll = (value: number) => {
-    setDealerRolls((prev) => {
-      const newRolls = [...prev, value];
-      const newTotal = newRolls.reduce((sum, r) => sum + r, 0);
-
-      setDealerTotal(newTotal);
-
-      if (newTotal > 21) {
-        setDealerBust(true);
-        setDealerStanding(true);
-      } else if (newTotal >= 16) {
-        setDealerStanding(true);
-      }
-
-      return newRolls;
-    });
-  };
-
-  const resetGame = () => {
-    setGameState({
-      playerTotal: 0,
-      rolls: [],
-      gameStatus: "initial",
-      canHit: false,
-    });
-
-    setDealerRolls([]);
-    setDealerTotal(0);
-    setDealerBust(false);
-    setDealerStanding(false);
-  };
-
-  const roundFinished = gameState.gameStatus === "bust" || gameState.gameStatus === "stand";
+  const roundFinished = playerGameStatus === "bust" || playerGameStatus === "stand";
 
   return (
-    <>
+    <div className="blackjack-game">
       <h1>Blackjack med terninger</h1>
 
-      <PlayerState rolls={gameState.rolls} total={gameState.playerTotal} bust={gameState.gameStatus === "bust"} standing={gameState.gameStatus === "stand"} />
+      {/* Dealer section - top center */}
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+        <DealerCard playerGameStatus={playerGameStatus} onDealerFinished={handleDealerFinished} />
+      </div>
 
-      {roundFinished && <DealerState rolls={dealerRolls} total={dealerTotal} bust={dealerBust} standing={dealerStanding} onRoll={handleDealerRoll} />}
+      {/* Player section - center */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
+        <PlayerCard onGameStateChange={handlePlayerStateChange} />
+      </div>
 
-      {gameState.gameStatus === "initial" && <DiceRoller onRoll={handleFirstRoll} />}
+      {/* Game State Information */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}>
+        <PlayerState rolls={playerRolls} total={playerTotal} bust={playerGameStatus === "bust"} standing={playerGameStatus === "stand"} />
 
-      {gameState.gameStatus === "playing" && (
-        <>
-          <DiceRoller onRoll={handleHit} disabled={!gameState.canHit} />
-          <button onClick={handleStand}>Stand</button>
-        </>
-      )}
+        {roundFinished && (
+          <DealerState
+            rolls={dealerRolls}
+            total={dealerTotal}
+            bust={dealerBust}
+            standing={dealerStanding}
+            onRoll={() => {}} // Dealer rolls are handled automatically in DealerCard
+          />
+        )}
+      </div>
 
-      {roundFinished && <button onClick={resetGame}>New Game</button>}
-
-      <TaberBesked spillerHand={gameState.playerTotal} dealerHand={dealerTotal} roundFinished={roundFinished} />
-    </>
+      <TaberBesked spillerHand={playerTotal} dealerHand={dealerTotal} roundFinished={roundFinished} />
+    </div>
   );
 };
-
 export default BlackjackGame;
