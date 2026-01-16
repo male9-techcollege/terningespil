@@ -22,9 +22,10 @@ For testing purposes (colours):
 <div>test</div>
 <div>#000000; #ffffff; #3b0d0d; #ff4d4d; #0E9AB7; #2AC9C8; #F7E7AD;</div>
 */
-// #endregion Testing 
+// #endregion Testing
 import "./App.scss";
 import "./styles/typography.module.scss";
+import BlackjackGame from "./components/BlackjackGame/BlackjackGame";
 
 function App() {
   return (
