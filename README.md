@@ -12,7 +12,7 @@ Holdmedlemmerne er:
 
 Tredjeparts licenser
 * Skrifttyperne er fra Google Fonts med en SIL-Open-Font licens (SIL Open Font License).
-* De følgende tre billeder blev fundet på Vecteezy.com:
+* De følgende tre billeder blev fundet på [Vecteezy.com](https://www.vecteezy.com/licensing-agreement):
 > * [vecteezy_3d-rotating-ludo-dice-on-black-background_24079254.jpg](https://www.vecteezy.com/photo/24079254-3d-rotating-ludo-dice-on-black-background) er et billede af only designz, Bangladesh (gratis, kreditering påkræves).
 > * [vecteezy_two-dice-falling-on-a-wooden-table_69930712.jpeg](https://www.vecteezy.com/photo/69930712-two-dice-falling-on-a-wooden-table) er et billede af Siraphol Siricharattakul (gratis, kreditering påkræves).
 > * [vecteezy_the-man-in-the-suit-is-looking-up_72156992.jpeg](https://www.vecteezy.com/photo/72156992-the-man-in-the-suit-is-looking-up) er et billede af Marcin Paśnicki (gratis, kreditering påkræves). 
