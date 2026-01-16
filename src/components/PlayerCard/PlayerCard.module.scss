@@ -1,0 +1,189 @@
+@use "../../styles/variables.module.scss" as *;
+
+.playerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $clr-x-dark-burgundy-by-marie-pierre-lessard 0%, $clr-reddish-orange-by-marie-pierre-lessard 100%);
+  border-radius: 12px;
+  padding: $size-base-by-marie-pierre-lessard;
+  margin: $size-base-by-marie-pierre-lessard;
+  max-width: 350px;
+  box-shadow: 0 8px 16px $clr-black-w-alpha-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
+  position: relative; // For overlay positioning
+
+  /* Will be positioned with justify-content center in parent container */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.bustMessage {
+  background-color: $clr-reddish-orange-by-marie-pierre-lessard;
+  border: 2px solid $clr-soft-yellow-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
+  padding: $size-base-by-marie-pierre-lessard;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 4px 8px $clr-black-w-alpha-by-marie-pierre-lessard;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.3rem;
+    color: $clr-white-by-marie-pierre-lessard;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+}
+
+.bustMessage {
+  background-color: $clr-reddish-orange-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
+  padding: $size-base-by-marie-pierre-lessard;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid $clr-soft-yellow-by-marie-pierre-lessard;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cardHeader {
+  margin-bottom: 15px;
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.cardPlaceholder {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 50px;
+  height: 70px;
+  background: $clr-white-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px $clr-black-w-alpha-by-marie-pierre-lessard;
+  border: 2px solid $clr-soft-yellow-by-marie-pierre-lessard;
+}
+
+.playerInfo {
+  text-align: center;
+
+  p {
+    margin: 3px 0;
+    font-size: 1rem;
+  }
+}
+
+.actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hitButton,
+.standButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.hitButton {
+  background-color: $clr-dark-blue-by-marie-pierre-lessard;
+  color: $clr-white-by-marie-pierre-lessard;
+
+  &:hover:not(:disabled) {
+    background-color: darken($clr-dark-blue-by-marie-pierre-lessard, 10%);
+  }
+}
+
+.standButton {
+  background-color: $clr-soft-yellow-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+
+  &:hover:not(:disabled) {
+    background-color: darken($clr-soft-yellow-by-marie-pierre-lessard, 10%);
+  }
+}
+
+.resetButton {
+  background-color: $clr-turquoise-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: darken($clr-turquoise-by-marie-pierre-lessard, 10%);
+  }
+}
