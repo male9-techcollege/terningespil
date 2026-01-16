@@ -8,8 +8,7 @@
 }
 
 /* Font families */
-/* The font selection was facilitated by https://fontjoy.com */
-
+/* Source: the font selection was facilitated by https://fontjoy.com */
 /* In order to reduce memory usage, I left out the unused Trirong font files from the assets folder.
 It's always to possible to add font files if necessary. */
 
@@ -26,7 +25,7 @@ Most letters are sans-serif, some of them have a serif style. The font combines 
 
 /* An elegant and modern serif font that doesn't feel too dated. Easily readable.
 Also suitable for headings and any text that requires emphasis.
-It should goes well with the fallback fonts chosen. 
+It goes well with the fallback fonts chosen. 
 */
 @font-face {
     font-family: "Trirong Thin";
@@ -182,6 +181,12 @@ https: //docs.streamlit.io/develop/concepts/configuration/theming-customize-font
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     min-height: 100vh;
+
+    /* Dark theme because it's a casino */
+    color: $clr-white-by-marie-pierre-lessard;
+    background-color: $clr-black-by-marie-pierre-lessard;
+    
+    // Potential light theme (on top of a dark theme or instead of it)
+    // color: $clr-black-by-marie-pierre-lessard;
+    // background-color: $clr-white-by-marie-pierre-lessard;
 }
-
-
