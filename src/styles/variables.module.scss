@@ -1,11 +1,50 @@
-/* TO DO
-Farvepaletten kommer til at bruge
-#ff4d4d
+/* #region Important notes about accessibility (colours that work when superposed) */
+/* To the team:
+See the swatches of colours next to each other in assets folder to get an impression!
 
-#3b0d0d
+Colours chosen from the start: 
+Very dark burgundy (almost black): #3b0d0d 
+Reddish orange: #ff4d4d
 
-$clr-
+Since these two colours are analogous (next to each other on the colour wheel,
+a touch of turquoise would bring contrast to the colour scheme (a split-complementary palette). 
+Great for the normally sighted,
+but as one can expect, Daltonians will have a problem with certain combinations. 
+Source for colour-palette names: https: //www.youtube.com/watch?v=LO30zFqpj-c
+Palette checked with Adobe Accessibility Tools at https: //color.adobe.com/create/color-contrast-analyzer
+
+SUMMARY OF ACCESSIBILITY TESTS
+- BLACK good as background colour except with burgundy text
+- BURGUNDY good as background colour except with black text
+WITH WHITE BACKGROUND:
+black on white: all good (and vice versa)
+burgundy on white: all good (and vice versa)
+dark blue on white: FAILS when text is smaller than 17pt (22-23 px acc. to https://simplecss.eu/pxtoems.html)  (and vice versa)
+turquoise on white: FAILS ALL TESTS (and vice versa)
+orange on white: FAILS when text is smaller than 17pt (22-23 px acc. to https: //simplecss.eu/pxtoems.html)  (and vice versa)
+yellow on white: FAILS ALL TESTS (and vice versa)
+WITH BLACK BACKGROUND:
+burgundy on black: FAILS ALL TESTS (and vice versa)
+dark blue on black: all good (and vice versa)
+turquoise on black: all good (and vice versa)
+orange on black: all good (and vice versa)
+yellow on black: all good (and vice versa)
+WITH BURGUNDY BACKGROUND:
+dark blue on burgundy: all good (and vice versa)
+turquoise on burgundy: all good (and vice versa)
+orange on burgundy: all good (and vice versa)
+yellow on burgundy: all good (and vice versa)
+WITH ORANGE BACKGROUND:
+dark blue on orange: FAILS ALL TESTS (and vice versa)
+turquoise on orange: FAILS ALL TESTS (and vice versa)
+yellow on orange: FAILS ALL TESTS (and vice versa)
+WITH YELLOW BACKGROUND:
+dark blue on yellow: FAILS ALL TESTS (and vice versa)
+turquoise on yellow: FAILS ALL TESTS (and vice versa)
+WITH DARK-BLUE BACKGROUND:
+turquoise on dark blue: FAILS ALL TESTS (and vice versa)
 */
+/* #endregion */
 
 @use "sass:math";
 
@@ -18,12 +57,16 @@ or text will touch the edges of the screen.
 Basic margin of $size-base-by-marie-pierre-lessard was used for that. 
 */
 $size-base-by-marie-pierre-lessard: 1rem;
+$size-sixth-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.166;
+$size-fourth-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.25;
 $size-third-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.333;
 $size-half-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.5;
 $size-thirdx2-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.666;
 $size-three-quarters-base-by-marie-pierre-lessard: $size-base-by-marie-pierre-lessard * 0.75;
 
 $size-gr-by-marie-pierre-lessard: 1.618rem;
+$size-sixth-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.166;
+$size-fourth-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.25;
 $size-third-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.333;
 $size-half-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.5;
 $size-thirdx2-gr-by-marie-pierre-lessard: $size-gr-by-marie-pierre-lessard * 0.666;
@@ -33,3 +76,31 @@ $size-gr-cubed-by-marie-pierre-lessard: math.pow(1.618, 3) * 1rem;
 
 $size-wrapper-by-marie-pierre-lessard: 1300px;
 
+/* COLOURS */
+
+/* Dark theme (emphasis on warm tones; blue and turquoise are complementary colours to add contrast and interest): 
+Primary colour (background): black 
+Secondary colour (letters, probably spots in player areas, maybe borders, etc.): white
+A mix of accent colours to juxtapose (not superpose) create a casino feel 
+(the top three go very well together when they are side by side): 
+- Main accent colour: reddish orange (e.g. reddish orange + yellow + dark blue)
+- Second accent colour: yellow  
+- Third accent colour: dark blue (e.g. dark blue + reddish orange + burgundy)
+- Fourth accent colour: turquoise (e.g. turquoise + dark blue + reddish orange or yellow) 
+- Fifth accent colour: dark burgundy (looks particularly good with yellow and reddish orange; 
+good for colour superposition, alternative to real black)
+*/
+$clr-black-by-marie-pierre-lessard: #000000;
+$clr-black-w-alpha-by-marie-pierre-lessard: #00000040;
+$clr-white-by-marie-pierre-lessard: #ffffff;
+$clr-white-w-alpha-by-marie-pierre-lessard: #ffffff40;
+$clr-x-dark-burgundy-by-marie-pierre-lessard: #3b0d0d;
+$clr-x-dark-burgundy-w-alpha-by-marie-pierre-lessard: #3b0d0d40;
+$clr-reddish-orange-by-marie-pierre-lessard: #ff4d4d;
+$clr-reddish-orange-w-alpha-by-marie-pierre-lessard: #ff4d4d40;
+$clr-dark-blue-by-marie-pierre-lessard: #0E9AB7;
+$clr-dark-blue-w-alpha-by-marie-pierre-lessard: #0E9AB740;
+$clr-turquoise-by-marie-pierre-lessard: #2AC9C8;
+$clr-turquoise-w-alpha-by-marie-pierre-lessard: #2AC9C840;
+$clr-soft-yellow-by-marie-pierre-lessard: #F7E7AD;
+$clr-soft-yellow-w-alpha-by-marie-pierre-lessard: #F7E7AD40;
