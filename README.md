@@ -12,3 +12,5 @@ Holdmedlemmerne er:
 
 Tredjeparts licenser
 * Skrifttyperne er fra Google Fonts med en SIL-Open-Font licens (SIL Open Font License).
+* De følgende tre billeder blev fundet på Vecteezy.com:
+  ** (vecteezy_3d-rotating-ludo-dice-on-black-background_24079254.jpg)[https://www.vecteezy.com/photo/24079254-3d-rotating-ludo-dice-on-black-background] 
