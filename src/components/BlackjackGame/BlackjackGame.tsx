@@ -2,6 +2,8 @@ import { useState } from "react";
 import DiceRoller from "./../BlackjackDie/DiceRoller";
 import PlayerState from "../PlayerState/PlayerState";
 import TaberBesked from "../taberbesked/TaberBesked";
+import DealerCard from "../DealerCard/DealerCard";
+import PlayerCard from "../PlayerCard/PlayerCard";
 
 interface GameState {
   playerTotal: number;
@@ -72,7 +74,18 @@ const BlackjackGame = () => {
   const roundFinished = gameState.gameStatus === "bust" || gameState.gameStatus === "stand";
 
   return (
-    <>
+    <div className="blackjack-game">
+      {/* Dealer card at top center */}
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: "30px" }}>
+        <DealerCard />
+      </div>
+
+      {/* Player cards in center with justify-content center */}
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", marginBottom: "30px" }}>
+        <PlayerCard />
+      </div>
+
+      {/* Rest of the game UI */}
       <div>
         <h1>Blackjack med terninger</h1>
         <PlayerState rolls={gameState.rolls} total={gameState.playerTotal} bust={gameState.gameStatus === "bust"} standing={gameState.gameStatus === "stand"} />
@@ -117,7 +130,7 @@ const BlackjackGame = () => {
       <div>
         <TaberBesked spillerHand={gameState.playerTotal} dealerHand={0} roundFinished={roundFinished} />
       </div>
-    </>
+    </div>
   );
 };
 

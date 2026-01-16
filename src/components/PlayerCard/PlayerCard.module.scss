@@ -1,0 +1,98 @@
+.playerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  max-width: 350px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: white;
+
+  /* Will be positioned with justify-content center in parent container */
+}
+
+.cardHeader {
+  margin-bottom: 15px;
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.cardPlaceholder {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 50px;
+  height: 70px;
+  background: #fff;
+  color: #333;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd;
+}
+
+.playerInfo {
+  text-align: center;
+
+  p {
+    margin: 3px 0;
+    font-size: 1rem;
+  }
+}
+
+.actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hitButton,
+.standButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hitButton {
+  background-color: #28a745;
+  color: white;
+
+  &:hover {
+    background-color: #218838;
+  }
+}
+
+.standButton {
+  background-color: #dc3545;
+  color: white;
+
+  &:hover {
+    background-color: #c82333;
+  }
+}
