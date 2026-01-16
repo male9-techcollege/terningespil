@@ -45,7 +45,7 @@ const BlackjackGame = () => {
       </div>
 
       {/* Game State Information */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}>
+      <div style={{ display: "none", justifyContent: "center", gap: "20px", marginBottom: "20px", flexWrap: "wrap" }}>
         <PlayerState rolls={playerRolls} total={playerTotal} bust={playerGameStatus === "bust"} standing={playerGameStatus === "stand"} />
 
         {roundFinished && (
