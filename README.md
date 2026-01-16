@@ -13,4 +13,6 @@ Holdmedlemmerne er:
 Tredjeparts licenser
 * Skrifttyperne er fra Google Fonts med en SIL-Open-Font licens (SIL Open Font License).
 * De følgende tre billeder blev fundet på Vecteezy.com:
-> * [vecteezy_3d-rotating-ludo-dice-on-black-background_24079254.jpg](https://www.vecteezy.com/photo/24079254-3d-rotating-ludo-dice-on-black-background) 
+> * [vecteezy_3d-rotating-ludo-dice-on-black-background_24079254.jpg](https://www.vecteezy.com/photo/24079254-3d-rotating-ludo-dice-on-black-background) er et billede af only designz, Bangladesh.
+> * [vecteezy_two-dice-falling-on-a-wooden-table_69930712.jpeg](https://www.vecteezy.com/photo/69930712-two-dice-falling-on-a-wooden-table) er et billed af Siraphol Siricharattakul.
+> * []
