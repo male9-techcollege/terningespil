@@ -2,6 +2,7 @@ import { useState } from "react";
 import DiceRoller from "./../BlackjackDie/DiceRoller";
 import PlayerState from "../PlayerState/PlayerState";
 import TaberBesked from "../taberbesked/TaberBesked";
+import DealerState from "../DealerState/DealerState";
 
 interface GameState {
   playerTotal: number;
@@ -18,7 +19,11 @@ const BlackjackGame = () => {
     canHit: false,
   });
 
-  // Handle first roll
+  const [dealerRolls, setDealerRolls] = useState<number[]>([]);
+  const [dealerTotal, setDealerTotal] = useState(0);
+  const [dealerBust, setDealerBust] = useState(false);
+  const [dealerStanding, setDealerStanding] = useState(false);
+
   const handleFirstRoll = (value: number) => {
     setGameState({
       playerTotal: value,
@@ -28,7 +33,6 @@ const BlackjackGame = () => {
     });
   };
 
-  // Handle hit
   const handleHit = (value: number) => {
     const newTotal = gameState.playerTotal + value;
     const newRolls = [...gameState.rolls, value];
@@ -50,7 +54,6 @@ const BlackjackGame = () => {
     }
   };
 
-  // Handle stand
   const handleStand = () => {
     setGameState((prev) => ({
       ...prev,
@@ -59,7 +62,24 @@ const BlackjackGame = () => {
     }));
   };
 
-  // Reset game
+  const handleDealerRoll = (value: number) => {
+    setDealerRolls((prev) => {
+      const newRolls = [...prev, value];
+      const newTotal = newRolls.reduce((sum, r) => sum + r, 0);
+
+      setDealerTotal(newTotal);
+
+      if (newTotal > 21) {
+        setDealerBust(true);
+        setDealerStanding(true);
+      } else if (newTotal >= 16) {
+        setDealerStanding(true);
+      }
+
+      return newRolls;
+    });
+  };
+
   const resetGame = () => {
     setGameState({
       playerTotal: 0,
@@ -67,56 +87,55 @@ const BlackjackGame = () => {
       gameStatus: "initial",
       canHit: false,
     });
+
+    setDealerRolls([]);
+    setDealerTotal(0);
+    setDealerBust(false);
+    setDealerStanding(false);
   };
 
-  const roundFinished = gameState.gameStatus === "bust" || gameState.gameStatus === "stand";
+  const roundFinished =
+    gameState.gameStatus === "bust" || gameState.gameStatus === "stand";
 
   return (
     <>
-      <div>
-        <h1>Blackjack med terninger</h1>
-        <PlayerState rolls={gameState.rolls} total={gameState.playerTotal} bust={gameState.gameStatus === "bust"} standing={gameState.gameStatus === "stand"} />
-      </div>
-      <div className="game-controller">
-        <h2>Player Score: {gameState.playerTotal}</h2>
+      <h1>Blackjack med terninger</h1>
 
-        {gameState.gameStatus === "initial" && (
-          <div>
-            <p>Roll your first die to start!</p>
-            <DiceRoller onRoll={handleFirstRoll} />
-          </div>
-        )}
+      <PlayerState
+        rolls={gameState.rolls}
+        total={gameState.playerTotal}
+        bust={gameState.gameStatus === "bust"}
+        standing={gameState.gameStatus === "stand"}
+      />
 
-        {gameState.gameStatus === "playing" && (
-          <div>
-            <p>Your total: {gameState.playerTotal}</p>
-            <p>Choose your action:</p>
-            <DiceRoller onRoll={handleHit} disabled={!gameState.canHit} />
-            <button onClick={handleStand}>Stand</button>
-          </div>
-        )}
+      {roundFinished && (
+        <DealerState
+          rolls={dealerRolls}
+          total={dealerTotal}
+          bust={dealerBust}
+          standing={dealerStanding}
+          onRoll={handleDealerRoll}
+        />
+      )}
 
-        {gameState.gameStatus === "bust" && (
-          <div>
-            <h3>BUST! You went over 21</h3>
-            <button onClick={resetGame}>New Game</button>
-          </div>
-        )}
+      {gameState.gameStatus === "initial" && (
+        <DiceRoller onRoll={handleFirstRoll} />
+      )}
 
-        {gameState.gameStatus === "stand" && (
-          <div>
-            <h3>You stand with {gameState.playerTotal}</h3>
-            <button onClick={resetGame}>New Game</button>
-          </div>
-        )}
+      {gameState.gameStatus === "playing" && (
+        <>
+          <DiceRoller onRoll={handleHit} disabled={!gameState.canHit} />
+          <button onClick={handleStand}>Stand</button>
+        </>
+      )}
 
-        <div className="roll-history">
-          <p>Rolls: {gameState.rolls.join(", ")}</p>
-        </div>
-      </div>
-      <div>
-        <TaberBesked spillerHand={gameState.playerTotal} dealerHand={0} roundFinished={roundFinished} />
-      </div>
+      {roundFinished && <button onClick={resetGame}>New Game</button>}
+
+      <TaberBesked
+        spillerHand={gameState.playerTotal}
+        dealerHand={dealerTotal}
+        roundFinished={roundFinished}
+      />
     </>
   );
 };
