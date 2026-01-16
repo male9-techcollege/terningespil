@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DealerCard from "../DealerCard/DealerCard";
 import PlayerCard from "../PlayerCard/PlayerCard";
 import PlayerState from "../PlayerState/PlayerState";
