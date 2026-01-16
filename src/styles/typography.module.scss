@@ -1,0 +1,45 @@
+@use "./variables.module.scss" as *;
+
+/* Explanation to team members:
+About font sizes: unless titles are really long,
+the following font sizes should work on a 320px wide mobile phone. 
+The sizes could be made even bigger for very large screens, but this is a good start.
+*/
+
+h1 {
+    /* This font is always bold-looking. */
+    font-family: "Limelight",
+        Georgia,
+        "Times New Roman",
+        Times,
+        serif;
+    font-size: $size-gr-squared-by-marie-pierre-lessard;
+}
+
+h2 {
+    font-family: "Trirong Thin Italic",
+        Georgia,
+        "Times New Roman",
+        Times,
+        serif;
+    font-size: $size-gr-by-marie-pierre-lessard;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Numans Regular",
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+    /* Since it is a casino, a more imposing font weight looks better with Numans Regular. 
+    It looks adequate (not too bold) with the fallback "Segoe UI". 900 was too much with the fallback. */
+    font-weight: 800;
+}
+
+h3 {
+    font-size: $size-three-quarters-gr-by-marie-pierre-lessard;
+}

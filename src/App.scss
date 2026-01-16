@@ -1,0 +1,48 @@
+@import "./styles/variables";
+/* #region Testing */
+/* For testing purposes (image component; test successful) 
+.test {
+    width: 100px;
+    height: 100px;
+}
+
+For testing purposes (swatches of colour)
+.App {
+
+    div {
+        height: 100px;
+        width: 200px;
+        padding: 2rem;
+    }
+
+    div:nth-of-type(1) {
+        background-color: #0E9AB7;
+    }
+
+    div:nth-of-type(2) {
+        background-color: #2AC9C8;
+    }
+
+    div:nth-of-type(3) {
+        background-color: #3b0d0d;
+
+    }
+
+    div:nth-of-type(4) {
+        background-color: #ff4d4d;
+    }
+
+    div:nth-of-type(5) {
+        background-color: #F7E7AD;
+    }
+}
+*/
+/* #endregion Testing */
+
+@use "./styles/variables.module.scss" as *;
+
+.App {
+    max-width: $size-wrapper-by-marie-pierre-lessard;
+    margin-inline: auto;
+    margin-block: $size-base-by-marie-pierre-lessard;
+}
