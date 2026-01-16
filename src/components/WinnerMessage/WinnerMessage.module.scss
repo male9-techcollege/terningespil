@@ -1,0 +1,170 @@
+@use "../../styles/variables.module.scss" as *;
+
+.winnerMessage {
+  background: linear-gradient(135deg, $clr-reddish-orange-by-marie-pierre-lessard 0%, $clr-x-dark-burgundy-by-marie-pierre-lessard 100%);
+  color: $clr-white-by-marie-pierre-lessard;
+  padding: $size-gr-by-marie-pierre-lessard;
+  border-radius: 12px;
+  text-align: center;
+  border: 3px solid $clr-soft-yellow-by-marie-pierre-lessard;
+  box-shadow: 0 8px 24px $clr-black-w-alpha-by-marie-pierre-lessard;
+  animation: celebrate 0.6s ease-out;
+  max-width: 90%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 2s infinite;
+  }
+}
+
+.title {
+  margin: 0 0 $size-half-base-by-marie-pierre-lessard;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: $clr-soft-yellow-by-marie-pierre-lessard;
+}
+
+.subtitle {
+  margin: 0 0 $size-base-by-marie-pierre-lessard;
+  font-size: 1.1rem;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: $size-fourth-base-by-marie-pierre-lessard;
+}
+
+.detail {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: $size-fourth-base-by-marie-pierre-lessard $size-half-base-by-marie-pierre-lessard;
+  border-radius: 6px;
+  border: 1px solid $clr-soft-yellow-by-marie-pierre-lessard;
+}
+
+.closeButton {
+  margin-top: $size-base-by-marie-pierre-lessard;
+  padding: $size-half-base-by-marie-pierre-lessard $size-base-by-marie-pierre-lessard;
+  border: none;
+  border-radius: 8px;
+  background-color: $clr-soft-yellow-by-marie-pierre-lessard;
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: darken($clr-soft-yellow-by-marie-pierre-lessard, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(0%) translateY(0%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Variant for winning games */
+.winnerMessage:has(.title:contains("DU VANDT")) {
+  background: linear-gradient(135deg, $clr-turquoise-by-marie-pierre-lessard 0%, $clr-dark-blue-by-marie-pierre-lessard 100%);
+  border-color: $clr-turquoise-by-marie-pierre-lessard;
+
+  .title {
+    color: $clr-soft-yellow-by-marie-pierre-lessard;
+  }
+
+  .closeButton {
+    background-color: $clr-turquoise-by-marie-pierre-lessard;
+    color: $clr-white-by-marie-pierre-lessard;
+
+    &:hover {
+      background-color: darken($clr-turquoise-by-marie-pierre-lessard, 10%);
+    }
+  }
+}
+
+/* Variant for tie games */
+.winnerMessage:has(.title:contains("UAFGJORT")) {
+  background: linear-gradient(135deg, $clr-soft-yellow-by-marie-pierre-lessard 0%, $clr-reddish-orange-by-marie-pierre-lessard 100%);
+  color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  border-color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+
+  .title {
+    color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  }
+
+  .detail {
+    border-color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+  }
+
+  .closeButton {
+    background-color: $clr-x-dark-burgundy-by-marie-pierre-lessard;
+    color: $clr-soft-yellow-by-marie-pierre-lessard;
+
+    &:hover {
+      background-color: lighten($clr-x-dark-burgundy-by-marie-pierre-lessard, 10%);
+    }
+  }
+}
+
+/* Variant for losing games (including bust) */
+.winnerMessage:has(.title:contains("DU TABTE")) {
+  background: linear-gradient(135deg, $clr-reddish-orange-by-marie-pierre-lessard 0%, $clr-x-dark-burgundy-by-marie-pierre-lessard 100%);
+  border-color: $clr-reddish-orange-by-marie-pierre-lessard;
+
+  .title {
+    color: $clr-soft-yellow-by-marie-pierre-lessard;
+  }
+
+  .closeButton {
+    background-color: $clr-reddish-orange-by-marie-pierre-lessard;
+    color: $clr-white-by-marie-pierre-lessard;
+
+    &:hover {
+      background-color: darken($clr-reddish-orange-by-marie-pierre-lessard, 10%);
+    }
+  }
+}

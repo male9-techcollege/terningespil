@@ -30,6 +30,24 @@
   border-radius: 12px;
   z-index: 10;
   animation: fadeIn 0.3s ease-in-out;
+  cursor: pointer;
+  padding: $size-base-by-marie-pierre-lessard;
+}
+
+.modalContent {
+  cursor: default; // Reset cursor for modal content
+  max-width: 95%;
+  max-height: 95%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Ensure modal content is always visible and centered
+  @media (max-width: 480px) {
+    max-width: 98%;
+    max-height: 98%;
+  }
 }
 
 .bustMessage {
