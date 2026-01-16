@@ -6,16 +6,11 @@ type TaberBeskedProps = {
   roundFinished: boolean;
 };
 
-export default function TaberBesked({
-  spillerHand,
-  dealerHand,
-  roundFinished,
-}: TaberBeskedProps) {
+export default function TaberBesked({ spillerHand, dealerHand, roundFinished }: TaberBeskedProps) {
   if (!roundFinished) return null;
 
   const spillerBust = spillerHand > 21;
-  const dealerVinder =
-    dealerHand <= 21 && dealerHand > spillerHand;
+  const dealerVinder = dealerHand <= 21 && dealerHand > spillerHand;
 
   const skalViseTaberBesked = spillerBust || dealerVinder;
 
@@ -24,11 +19,7 @@ export default function TaberBesked({
   return (
     <div className={styles.taberBesked}>
       <h2>Bust!!</h2>
-      <p>
-        {spillerBust
-          ? "Bust!"
-          : "Dealer havde en højere hånd."}
-      </p>
+      <p>{spillerBust ? "Bust!" : "Dealer havde en højere hånd."}</p>
     </div>
   );
 }

@@ -41,7 +41,7 @@ const BlackjackGame = () => {
 
       {/* Player section - center */}
       <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
-        <PlayerCard onGameStateChange={handlePlayerStateChange} />
+        <PlayerCard onGameStateChange={handlePlayerStateChange} dealerTotal={dealerTotal} dealerBust={dealerBust} dealerStanding={dealerStanding} gameFinished={roundFinished} />
       </div>
 
       {/* Game State Information */}
@@ -54,7 +54,8 @@ const BlackjackGame = () => {
             total={dealerTotal}
             bust={dealerBust}
             standing={dealerStanding}
-            onRoll={() => {}} // Dealer rolls are handled automatically in DealerCard
+            // Dealer rolls are handled automatically in DealerCard
+            onRoll={() => {}}
           />
         )}
       </div>
